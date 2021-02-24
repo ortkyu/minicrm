@@ -40,5 +40,5 @@
   ],
   "include": [
     "src"
-  ]
+, "index.js"  ]
 }
