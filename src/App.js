@@ -1,19 +1,10 @@
-import './App.css';
-import { useEffect } from 'react'
-import {Building} from "./Component/Building"
-
-
-
+import "./App.css";
+import { Building } from "./Component/Building";
 
 export default function App() {
-
- 
-  
   return (
     <div className="">
-    <Building/>
+      <Building />
     </div>
   );
 }
-
-

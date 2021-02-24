@@ -1,53 +1,56 @@
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
 }
 
 .block {
-    border-radius: 10px;
-    background-color: rgb(192, 192, 192);
-    width: 45%;
+  border-radius: 10px;
+  background-color: rgb(192, 192, 192);
+  width: 45%;
 }
 
 .block h2 {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 
 .block div {
-    margin: 20px;
+  margin: 20px;
 }
 
 .activ {
-    background-color: rgb(214, 212, 212);
+  background-color: rgb(214, 212, 212);
 }
 
 .wrap {
-    margin: 20px;
+  margin: 20px;
 }
 
 .icon svg {
-    margin-bottom: -3px;
-    margin-left: 10px;
+  margin-bottom: -3px;
+  margin-left: 10px;
 }
 
 .iconEdit svg {
-    margin-bottom: -5px;
-    margin-left: 10px;
+  margin-bottom: -5px;
+  margin-left: 10px;
 }
 
 .iconInv {
-    margin-bottom: -3px;
-    margin-left: 10px;
+  margin-bottom: -3px;
+  margin-left: 10px;
 }
 
-.name :hover, .icon :hover, .iconEdit :hover {
-    background-color: rgb(116, 115, 115);
+.name :hover,
+.icon :hover,
+.iconEdit :hover {
+  background-color: rgb(116, 115, 115);
 }
 
-.inputEdit button, .inputEdit input {
-    background-color: rgb(177, 177, 177);
-    border: none;
-    height: 20px;
-    font-size: 15px;
+.inputEdit button,
+.inputEdit input {
+  background-color: rgb(177, 177, 177);
+  border: none;
+  height: 20px;
+  font-size: 15px;
 }
