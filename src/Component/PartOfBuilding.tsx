@@ -4,9 +4,9 @@ import { Room } from "./Room"
 import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 
 interface Props {
-  setId: any
+  setId: React.Dispatch<React.SetStateAction<string[]>>
   setActiv: React.Dispatch<React.SetStateAction<string>>
-  activElement: string | undefined
+  activElement: string
   inventory: InventoryInt[]
   construction: PlaceInt
   places: PlaceInt[]
@@ -24,7 +24,7 @@ export const PartOfBuilding: React.FC<Props> = ({
     construction.parts &&
     places.filter((i) => construction.parts.includes(i.id))
 
-  const [openChildParts, setOpen] = useState(false)
+  const [openChildParts, setOpen] = useState<boolean>(false)
   const togle = () => setOpen(!openChildParts)
 
   const addId = () => {
@@ -35,13 +35,13 @@ export const PartOfBuilding: React.FC<Props> = ({
       setId([construction.id, construction.parts])
       setActiv(construction.id)
     } else {
-      setId(construction.id)
+      setId([construction.id])
       setActiv(construction.id)
     }
   }
 
-  let inventoryAvailability = inventory.filter(
-    (i) =>
+  let inventoryAvailability: InventoryInt[] = inventory.filter(
+    (i: InventoryInt) =>
       i.placeId === construction.id ||
       (construction.parts && construction.parts.includes(i.placeId))
   )

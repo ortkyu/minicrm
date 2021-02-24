@@ -3,10 +3,7 @@ import firebase from "firebase"
 import "./building.css"
 import { MainBuilding } from "./MainBuilding"
 import { InventoryList } from "./InventoryList"
-import {
-  PlaceInt,
-  InventoryInt,
-} from "../Interfaces/interfaces"
+import { PlaceInt, InventoryInt } from "../Interfaces/interfaces"
 
 export const Building: React.FC = () => {
   var firebaseConfig = {
@@ -59,12 +56,16 @@ export const Building: React.FC = () => {
       })
   }, [])
 
-  const [activElement, setActiv] = useState("")
+  const [activElement, setActiv] = useState<string>("")
 
-  const [idInventory, setId] = useState("")
+  const [idInventory, setId] = useState<string[]>([])
 
-  let sortPlacesByParts = places.filter((i) => i.parts).flatMap((p) => p.parts)
-  let mainBuildings = places.filter((i) => !sortPlacesByParts.includes(i.id))
+  let sortPlacesByParts: string[] = places
+    .filter((i: PlaceInt) => i.parts)
+    .flatMap((p) => p.parts)
+  let mainBuildings: PlaceInt[] = places.filter(
+    (i: PlaceInt) => !sortPlacesByParts.includes(i.id)
+  )
 
   return (
     <div className={"wrapper"}>

@@ -2,9 +2,9 @@ import "./building.css"
 import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 
 interface Props {
-  setId: any
+  setId: React.Dispatch<React.SetStateAction<string[]>>
   setActiv: React.Dispatch<React.SetStateAction<string>>
-  activElement: string | undefined
+  activElement: string
   inventory: InventoryInt[]
   room: PlaceInt
 }
@@ -16,14 +16,16 @@ export const Room: React.FC<Props> = ({
   setActiv,
   inventory,
 }) => {
-  let inventoryAvailability = inventory.filter((i) => i.placeId === room.id)
+  let inventoryAvailability: InventoryInt[] = inventory.filter(
+    (i: InventoryInt) => i.placeId === room.id
+  )
 
   return (
     <div>
       <span
         className={room.id === activElement ? "activ" : "name"}
         onClick={() => {
-          setId(room.id)
+          setId([room.id])
           setActiv(room.id)
         }}
         key={room.id}

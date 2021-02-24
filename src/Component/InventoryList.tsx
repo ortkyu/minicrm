@@ -6,10 +6,10 @@ import { Inventory } from "./Inventory"
 import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 
 interface Props {
-  idInventory: any
+  idInventory: string[]
   places: PlaceInt[]
   setinventory: any
-  activElement: string | undefined
+  activElement: string
   inventory: InventoryInt[]
 }
 
@@ -27,9 +27,11 @@ export const InventoryList: React.FC<Props> = ({
     reset()
   }
 
-  let sortedInventory = inventory.filter((i) => idInventory.includes(i.placeId))
+  let sortedInventory: InventoryInt[] = inventory.filter((i: InventoryInt) =>
+    idInventory.includes(i.placeId)
+  )
 
-  const [openInputAddInvent, setOpen] = useState(false)
+  const [openInputAddInvent, setOpen] = useState<boolean>(false)
   const togle = () => setOpen(!openInputAddInvent)
 
   const addInventory = (nameInventory: string) => {
@@ -40,19 +42,21 @@ export const InventoryList: React.FC<Props> = ({
       .set({
         name: nameInventory,
         count: 1,
-        place: filestore.collection("places").doc(idInventory), // main-101 – id места
+        place: filestore.collection("places").doc(activElement), // main-101 – id места
       })
       .then(() => {
         setinventory([
           ...inventory,
-          { data: { name: nameInventory, count: 1 }, placeId: idInventory },
+          { data: { name: nameInventory, count: 1 }, placeId: activElement },
         ])
         togle()
       })
   }
 
-  let changePlace = places.filter((p: PlaceInt) => p.id === activElement)[0]
-  let childEl = places.filter((p: PlaceInt) => !p.parts)
+  let changePlace: PlaceInt = places.filter(
+    (p: PlaceInt) => p.id === activElement
+  )[0]
+  let childEl: PlaceInt[] = places.filter((p: PlaceInt) => !p.parts)
 
   return (
     <>

@@ -6,9 +6,9 @@ import { PartOfBuilding } from "./PartOfBuilding"
 interface Props {
   build: PlaceInt
   places: PlaceInt[]
-  setId: any
+  setId: React.Dispatch<React.SetStateAction<string[]>>
   setActiv: React.Dispatch<React.SetStateAction<string>>
-  activElement: string | undefined
+  activElement: string
   inventory: InventoryInt[]
 }
 
@@ -20,20 +20,20 @@ export const MainBuilding: React.FC<Props> = ({
   activElement,
   inventory,
 }) => {
-  const [openpartsOfBuilding, setOpen] = useState(false)
+  const [openpartsOfBuilding, setOpen] = useState<boolean>(false)
   const togle = () => setOpen(!openpartsOfBuilding)
 
-  let partsOfBuilding =
-    build && places.filter((i) => build.parts.includes(i.id))
+  let partsOfBuilding: PlaceInt[] =
+    build && places.filter((i: PlaceInt) => build.parts.includes(i.id))
 
-  let childConstructionsParts = partsOfBuilding.flatMap(
+  let childConstructionsParts: string[] = partsOfBuilding.flatMap(
     (c: PlaceInt) => c.parts
   )
-  let idsByPartsBuild =
+  let idsByPartsBuild: string[] =
     partsOfBuilding &&
     places
       .filter((i: PlaceInt) => childConstructionsParts.includes(i.id))
-      .flatMap((p) => p.id)
+      .flatMap((p: PlaceInt) => p.id)
 
   const addId = (id: string | string[]) => {
     idsByPartsBuild
@@ -42,13 +42,13 @@ export const MainBuilding: React.FC<Props> = ({
     setActiv(build.id)
   }
 
-  let idsInvent = inventory.map((p) => p.placeId)
+  let idsInvent: string[] = inventory.map((p: InventoryInt) => p.placeId)
 
-  let partsChild = partsOfBuilding.flatMap((p) => p.parts)
-  let idsChild = partsOfBuilding.flatMap((p) => p.id)
+  let partsChild: string[] = partsOfBuilding.flatMap((p: PlaceInt) => p.parts)
+  let idsChild: string[] = partsOfBuilding.flatMap((p: PlaceInt) => p.id)
 
-  let inventoryAvailability = idsInvent.filter(
-    (i) => idsChild.includes(i) || partsChild.includes(i)
+  let inventoryAvailability: string[] = idsInvent.filter(
+    (i: string) => idsChild.includes(i) || partsChild.includes(i)
   )
 
   return (

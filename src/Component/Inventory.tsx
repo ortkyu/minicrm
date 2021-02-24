@@ -2,16 +2,12 @@ import "./building.css"
 import firebase from "firebase"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
-import {
-  InventoryInt,
-  PlaceInt,
-  IdInvent,
-} from "../Interfaces/interfaces"
+import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 
 interface Props {
-  idInventory: IdInvent
+  idInventory: string[]
   setinventory: any
-  activElement: string | undefined
+  activElement: string
   inventory: InventoryInt[]
   invent: InventoryInt
   changePlace: PlaceInt
@@ -25,6 +21,7 @@ export const Inventory: React.FC<Props> = ({
   invent,
   changePlace,
   childEl,
+  activElement,
 }) => {
   const {
     register: register2,
@@ -39,7 +36,7 @@ export const Inventory: React.FC<Props> = ({
     reset2()
   }
 
-  const [openEdit, setOpenEdit] = useState(false)
+  const [openEdit, setOpenEdit] = useState<boolean>(false)
   const togleEditWind = () => {
     setOpenEdit(!openEdit)
   }
@@ -67,8 +64,8 @@ export const Inventory: React.FC<Props> = ({
       .then(() => {
         togleEditWind()
         setinventory([
-          inventory.filter((i) => i.id !== invent.id),
-          { data: { name: editInventory }, placeId: idInventory },
+          ...inventory.filter((i) => i.id !== invent.id),
+          { data: { name: editInventory }, placeId: activElement },
         ])
       })
   }
