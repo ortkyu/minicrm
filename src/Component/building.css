@@ -1,13 +1,13 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .block {
   border-radius: 10px;
   background-color: rgb(192, 192, 192);
-  width: 45%;
+  width: 48%;
 }
 
 .block h2 {
@@ -15,7 +15,7 @@
 }
 
 .block div {
-  margin: 20px;
+  margin: 1rem;
 }
 
 .activ {
@@ -23,7 +23,7 @@
 }
 
 .wrap {
-  margin: 20px;
+  margin: 3%;
 }
 
 .icon svg {
@@ -53,4 +53,21 @@
   border: none;
   height: 20px;
   font-size: 15px;
+}
+@media all and (max-width: 600px) {
+  .wrapper {
+      margin: 5px;
+      font-size: 13px;
+  }
+  .wrapper svg {
+    width: 13px;
+    height: 13px;
+    margin-bottom: 0;
+}
+  .block div {
+    margin: 5%;
+  }
+  .inventItem {
+  border-bottom: solid 1px gray;
+  }
 }

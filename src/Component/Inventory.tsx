@@ -85,7 +85,7 @@ export const Inventory: React.FC<Props> = ({
           </form>
         </div>
       ) : (
-        <div>
+        <div className={"inventItem"}>
           <span>{invent.data.name}</span>
           <span>: &nbsp;{invent.data.count}</span>шт
           {childEl.includes(changePlace) && (
