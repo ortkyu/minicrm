@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/minicrm/static/css/main.e97ac135.chunk.css",
-    "main.js": "/minicrm/static/js/main.dd9154b1.chunk.js",
-    "main.js.map": "/minicrm/static/js/main.dd9154b1.chunk.js.map",
+    "main.js": "/minicrm/static/js/main.78091a1c.chunk.js",
+    "main.js.map": "/minicrm/static/js/main.78091a1c.chunk.js.map",
     "runtime-main.js": "/minicrm/static/js/runtime-main.819b5d7d.js",
     "runtime-main.js.map": "/minicrm/static/js/runtime-main.819b5d7d.js.map",
-    "static/js/2.71c3371d.chunk.js": "/minicrm/static/js/2.71c3371d.chunk.js",
-    "static/js/2.71c3371d.chunk.js.map": "/minicrm/static/js/2.71c3371d.chunk.js.map",
+    "static/js/2.bf8aeac6.chunk.js": "/minicrm/static/js/2.bf8aeac6.chunk.js",
+    "static/js/2.bf8aeac6.chunk.js.map": "/minicrm/static/js/2.bf8aeac6.chunk.js.map",
     "static/js/3.aa643425.chunk.js": "/minicrm/static/js/3.aa643425.chunk.js",
     "static/js/3.aa643425.chunk.js.map": "/minicrm/static/js/3.aa643425.chunk.js.map",
     "index.html": "/minicrm/index.html",
     "static/css/main.e97ac135.chunk.css.map": "/minicrm/static/css/main.e97ac135.chunk.css.map",
-    "static/js/2.71c3371d.chunk.js.LICENSE.txt": "/minicrm/static/js/2.71c3371d.chunk.js.LICENSE.txt"
+    "static/js/2.bf8aeac6.chunk.js.LICENSE.txt": "/minicrm/static/js/2.bf8aeac6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.819b5d7d.js",
-    "static/js/2.71c3371d.chunk.js",
+    "static/js/2.bf8aeac6.chunk.js",
     "static/css/main.e97ac135.chunk.css",
-    "static/js/main.dd9154b1.chunk.js"
+    "static/js/main.78091a1c.chunk.js"
   ]
 }
