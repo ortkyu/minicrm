@@ -6,22 +6,22 @@ import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 
 interface Props {
   idInventory: string[]
-  setinventory: any
   activElement: string
   inventory: InventoryInt[]
   invent: InventoryInt
   changePlace: PlaceInt
   childEl: PlaceInt[]
+  loadInventory: any
 }
 
 export const Inventory: React.FC<Props> = ({
   idInventory,
-  setinventory,
   inventory,
   invent,
   changePlace,
   childEl,
   activElement,
+  loadInventory
 }) => {
   const {
     register: register2,
@@ -47,15 +47,12 @@ export const Inventory: React.FC<Props> = ({
       .collection("inventory")
       .doc(id)
       .delete()
-      .then(() => {
-        setinventory(inventory.filter((i) => i.id !== id))
-      })
+      loadInventory()
   }
 
   const editInvent = (editInventory: string) => {
     firebase
       .firestore()
-      .collection("inventory")
       .doc(invent.id)
       .update({
         name: editInventory,
@@ -63,10 +60,7 @@ export const Inventory: React.FC<Props> = ({
       })
       .then(() => {
         togleEditWind()
-        setinventory([
-          ...inventory.filter((i) => i.id !== invent.id),
-          { data: { name: editInventory }, placeId: activElement },
-        ])
+        loadInventory()
       })
   }
 

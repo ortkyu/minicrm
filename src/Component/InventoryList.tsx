@@ -8,17 +8,17 @@ import { InventoryInt, PlaceInt } from "../Interfaces/interfaces"
 interface Props {
   idInventory: string[]
   places: PlaceInt[]
-  setinventory: any
   activElement: string
   inventory: InventoryInt[]
+  loadInventory: any
 }
 
 export const InventoryList: React.FC<Props> = ({
   idInventory,
-  setinventory,
   inventory,
   activElement,
   places,
+  loadInventory
 }) => {
   const { register, handleSubmit, errors, reset } = useForm()
   const onSubmit = (data: any) => {
@@ -35,6 +35,8 @@ export const InventoryList: React.FC<Props> = ({
   const togle = () => setOpen(!openInputAddInvent)
 
   const addInventory = (nameInventory: string) => {
+    console.log("добавили",activElement)
+
     let filestore = firebase.firestore()
     filestore
       .collection("inventory")
@@ -45,10 +47,7 @@ export const InventoryList: React.FC<Props> = ({
         place: filestore.collection("places").doc(activElement), // main-101 – id места
       })
       .then(() => {
-        setinventory([
-          ...inventory,
-          { data: { name: nameInventory, count: 1 }, placeId: activElement },
-        ])
+        loadInventory()
         togle()
       })
   }
@@ -98,8 +97,8 @@ export const InventoryList: React.FC<Props> = ({
                   childEl={childEl}
                   changePlace={changePlace}
                   idInventory={idInventory}
-                  setinventory={setinventory}
                   inventory={inventory}
+                  loadInventory={loadInventory}
                 />
               </div>
             ))

@@ -18,7 +18,7 @@ export const MainBuilding: React.FC<Props> = ({
   setId,
   setActiv,
   activElement,
-  inventory,
+  inventory
 }) => {
   const [openpartsOfBuilding, setOpen] = useState<boolean>(false)
   const togle = () => setOpen(!openpartsOfBuilding)

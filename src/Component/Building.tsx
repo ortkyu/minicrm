@@ -20,41 +20,52 @@ export const Building: React.FC = () => {
     firebase.initializeApp(firebaseConfig)
   }
 
-  const [places, setplaces] = useState<PlaceInt[]>([])
 
-  useEffect(() => {
+
+
+
+  let loadPlaces =  (): any =>  {
     firebase
-      .firestore()
-      .collection("places")
-      .get()
-      .then((response) => {
-        let docs = response.docs.map((x) => ({
-          id: x.id,
-          data: x.data(),
-          parts: x.data().parts && x.data().parts.map((part: any) => part.id),
-        }))
-        console.log(docs)
-        setplaces(docs)
-      })
-  }, [])
+    .firestore()
+    .collection("places")
+    .get()
+    .then((response) => {
+      let docs = response.docs.map((x) => ({
+        id: x.id,
+        data: x.data(),
+        parts: x.data().parts && x.data().parts.map((part: any) => part.id),
+      }))
+      console.log(docs)
+      setplaces(docs)
+    })
+  }
+
+  let loadInventory = (): any => {
+    firebase
+    .firestore()
+    .collection("inventory")
+    .get()
+    .then((response) => {
+      let docs = response.docs.map((x) => ({
+        id: x.id,
+        data: x.data(),
+        placeId: x.data().place && x.data().place.id, ///place.id
+      }))
+      console.info(docs)
+      setinventory(docs)
+    })
+  }
+
+  const [places, setplaces] = useState<PlaceInt[]>([])
 
   const [inventory, setinventory] = useState<InventoryInt[]>([])
 
+
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection("inventory")
-      .get()
-      .then((response) => {
-        let docs = response.docs.map((x) => ({
-          id: x.id,
-          data: x.data(),
-          placeId: x.data().place && x.data().place.id, ///place.id
-        }))
-        console.info(docs)
-        setinventory(docs)
-      })
+    loadPlaces()
+    loadInventory()
   }, [])
+
 
   const [activElement, setActiv] = useState<string>("")
 
@@ -84,12 +95,12 @@ export const Building: React.FC = () => {
         ))}
       </div>
       <div className={"block"}>
-        <InventoryList
+        <InventoryList  
+          loadInventory={loadInventory} 
           idInventory={idInventory}
           places={places}
           activElement={activElement}
           inventory={inventory}
-          setinventory={setinventory}
         />
       </div>
     </div>
