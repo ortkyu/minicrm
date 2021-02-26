@@ -51,7 +51,7 @@ export const PartOfBuilding: React.FC<Props> = ({
       {construction.parts && (
         <span className="icon" onClick={togle}>
           <svg
-            stroke-width="10"
+            strokeWidth="10"
             stroke="#2F3435"
             height="17px"
             id="Layer_1"

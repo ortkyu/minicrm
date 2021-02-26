@@ -40,7 +40,7 @@ export const Building: React.FC = () => {
     })
   }
 
-  let loadInventory = (): any => {
+  let loadInventory = (): void => {
     firebase
     .firestore()
     .collection("inventory")

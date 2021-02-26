@@ -10,7 +10,7 @@ interface Props {
   places: PlaceInt[]
   activElement: string
   inventory: InventoryInt[]
-  loadInventory: any
+  loadInventory: () => void
 }
 
 export const InventoryList: React.FC<Props> = ({
@@ -35,8 +35,6 @@ export const InventoryList: React.FC<Props> = ({
   const togle = () => setOpen(!openInputAddInvent)
 
   const addInventory = (nameInventory: string) => {
-    console.log("добавили",activElement)
-
     let filestore = firebase.firestore()
     filestore
       .collection("inventory")

@@ -11,7 +11,7 @@ interface Props {
   invent: InventoryInt
   changePlace: PlaceInt
   childEl: PlaceInt[]
-  loadInventory: any
+  loadInventory: () => void
 }
 
 export const Inventory: React.FC<Props> = ({
@@ -51,16 +51,18 @@ export const Inventory: React.FC<Props> = ({
   }
 
   const editInvent = (editInventory: string) => {
+    debugger
     firebase
       .firestore()
+      .collection("inventory")
       .doc(invent.id)
       .update({
         name: editInventory,
         count: 2,
       })
       .then(() => {
-        togleEditWind()
         loadInventory()
+        togleEditWind()
       })
   }
 
